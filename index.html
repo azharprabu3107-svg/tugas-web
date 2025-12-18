@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Edukasi AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================================
+           CSS
+           ============================================ */
+        
+        /* RESET DAN VARIABEL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #8b5cf6;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        /* ============================================
+           ELEMEN SEMANTIK HTML UNTUK STRUKTUR WEBSITE
+           ============================================ */
+        header, nav, main, section, article, aside, footer {
+            display: block;
+        }
+        
+        /* HEADER DAN NAVIGASI */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* ============================================
+           HERO SECTION DENGAN ELEMEN SEMANTIK
+           ============================================ */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* ============================================
+           BUTTON STYLING DENGAN CSS
+           ============================================ */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #059669;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* ============================================
+           MAIN CONTENT AREA
+           ============================================ */
+        main {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        /* ============================================
+           CONTENT CARDS UNTUK PENJELASAN AI
+           ============================================ */
+        .content-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            transition: var(--transition);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .content-card h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .content-card h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+        }
+
+         /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* ============================================
+           BAGIAN VIDEO PENJELASAN AI
+           ============================================ */
+        .video-container {
+            margin: 2rem 0;
+        }
+        
+        video {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        /* ============================================
+           BAGIAN AUDIO PENJELASAN AI
+           ============================================ */
+        .audio-container {
+            margin: 2rem 0;
+        }
+        
+        audio {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        
+        /* ============================================
+           PROJECT WEB PRIBADI TENTANG AI
+           ============================================ */
+        .portfolio-section {
+            background-color: #f0f9ff;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        /* Chatbot Demo */
+        .chatbot-demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .chatbot-demo {
+            background-color: #f8fafc;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 2px solid var(--light-gray);
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chatbot-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .chatbot-header i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 18px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .message.bot {
+            background-color: #e0f2fe;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message.user {
+            background-color: #dcfce7;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .demo-info {
+            padding: 1.5rem;
+        }
+        
+        .demo-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-info ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .demo-info li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* ============================================
+           PENGENALAN DASAR CSS UNTUK WEBSITE INI
+           ============================================ */
+        .css-intro {
+            background-color: #f8fafc;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px dashed var(--primary);
+        }
+        
+        .css-demo {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .css-box {
+            flex: 1;
+            min-width: 200px;
+            height: 150px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* ============================================
+           5 MACAM SELEKTOR CSS (DENGAN CONTOH NYATA)
+           ============================================ */
+        .selectors-section {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .selector-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .selector-card {
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        /* Contoh selektor universal */
+        .selector-demo * {
+            font-family: inherit;
+        }
+        
+        /* Contoh selektor elemen */
+        .selector-card h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        /* Contoh selektor class */
+        .selector-class {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Contoh selektor ID */
+        #selector-id {
+            background-color: var(--accent);
+            color: white;
+            border: 3px solid #059669;
+        }
+        
+        /* Contoh selektor atribut */
+        .selector-card[data-type="attribute"] {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .selector-card:hover {
+            transform: scale(1.05);
+        }
+        
+        /* ============================================
+           SIDEBAR INFORMASI TAMBAHAN
+           ============================================ */
+        sidebar {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gray);
+        }
+        
+        .ai-fact {
+            background-color: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        /* ============================================
+           FOOTER SEMANTIK
+           ============================================ */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 992px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            
+            sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-grid, .selector-demo {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* ============================================
+           ANIMASI UNTUK PENJELASAN VISUAL
+           ============================================ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-card {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* ============================================
+           STYLING KHUSUS UNTUK PENJELASAN KONSEP AI
+           ============================================ */
+        .ai-concept {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .ai-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .ai-node {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: var(--shadow);
+        }
+        
+        .ai-connection {
+            width: 50px;
+            height: 5px;
+            background-color: var(--gray);
+        }
+        
+        .ai-timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .ai-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER SEMANTIK - Navigasi Website
+         ============================================ -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-brain"></i>
+                <span>Ruang AI</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#basics" class="active">Dasar AI</a></li>
+                    <li><a href="#video">Video AI</a></li>
+                    <li><a href="#audio">Audio AI</a></li>
+                    <li><a href="#project">Proyek AI</a></li>
+                    <li><a href="#css">CSS & AI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================
+         HERO SECTION - Pengenalan AI
+         ============================================ -->
+    <section class="hero">
+        <div class="container">
+            <h1>Chatbot AI untuk Layanan Pelanggan</h1>
+            <p>Mengubah Cara Berbisnis dan Berinteraksi dengan Pelanggan melalui Kecerdasan Buatan.</p>
+            <p><strong>Belajar Mengenai Chatbot Cerdas dengan Dukungan AI</strong></p>
+            <a href="#basics" class="btn">Mulai Belajar AI</a>
+        </div>
+    </section>
+
+     <!-- ============================================
+           KONTEN UTAMA - Penjelasan tentang AI
+          ============================================ -->
+    <div class="container">
+        <main>
+            <div class="main-content">
+                <!-- Bagian 1: Dasar-dasar AI -->
+                <article id="basics" class="content-card">
+                    <h2><i class="fas fa-robot"></i> Apa itu Artificial Intelligence dan Chatbot AI?</h2>
+                    <p><b>Artificial Intelligence (AI)</b> adalah simulasi proses kecerdasan manusia oleh mesin, terutama sistem komputer. Proses ini mencakup pembelajaran, penalaran, dan koreksi diri.</p>
+                    <p><b>Chatbot AI</b> adalah program komputer cerdas yang meniru percakapan manusia menggunakan Kecerdasan Buatan (AI), khususnya Natural Language Processing (NLP) dan Machine Learning, untuk memahami, mengenali dan memberikan jawaban secara otomatis.</p>
+                    
+                    <div class="concept">
+                        <h3>3 Jenis AI Berdasarkan Kemampuan:</h3>
+                       
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>1. Artificial Narrow Intelligence (ANI)</h4>
+                                <p>AI yang dirancang untuk tugas spesifik. Contoh: asisten virtual, rekomendasi Netflix, mobil otonom.</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <h4>2. Artificial General Intelligence (AGI)</h4>
+                                <p>AI dengan kemampuan kognitif setara manusia. Dapat belajar dan menerapkan pengetahuan di berbagai bidang.</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <h4>3. Artificial Super Intelligence (ASI)</h4>
+                                <p>AI yang melebihi kecerdasan manusia dalam semua aspek. Masih dalam tahap teori dan penelitian.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Bagaimana AI Bekerja?</h3>
+                    <p>AI bekerja melalui kombinasi data besar, algoritma canggih, dan daya komputasi. Proses utamanya meliputi:</p>
+                    
+                    <div class="css-demo">
+                        <div class="css-box" style="background-color: #3b82f6;">
+                            <div>Input Data</div>
+                        </div>
+                        <div class="css-box" style="background-color: #8b5cf6;">
+                            <div>Pemrosesan</div>
+                        </div>
+                        <div class="css-box" style="background-color: #10b981;">
+                            <div>Output</div>
+                        </div>
+                        <div class="css-box" style="background-color: #f59e0b;">
+                            <div>Pembelajaran</div>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="content-card">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Mengapa Chatbot AI Penting untuk Bisnis?</h3>
+                <p>Dalam era digital, pelanggan mengharapkan respons yang cepat dan akurat. Chatbot AI memberikan solusi dengan kemampuan:</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background-color: #f0f9ff; padding: 1.5rem; border-radius: var(--radius);">
+                        <i class="fas fa-clock" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <h4 style="margin-bottom: 0.5rem;">Layanan 24/7</h4>
+                        <p>Chatbot tersedia kapan saja tanpa batas waktu kerja.</p>
+                    </div>
+
+                    <div style="background-color: #f0f9ff; padding: 1.5rem; border-radius: var(--radius);">
+                        <i class="fas fa-bolt" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <h4 style="margin-bottom: 0.5rem;">Respons Instan</h4>
+                        <p>Menjawab pertanyaan pelanggan dalam hitungan detik.</p>
+                    </div>
+                    
+                    <div style="background-color: #f0f9ff; padding: 1.5rem; border-radius: var(--radius);">
+                        <i class="fas fa-chart-line" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <h4 style="margin-bottom: 0.5rem;">Skalabilitas</h4>
+                        <p>Menangani ribuan percakapan secara bersamaan.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background-color: #fef7cd; border-radius: var(--radius); border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #d97706; margin-bottom: 0.5rem;">Fakta Penting:</h4>
+                    <p>Menurut penelitian, <span class="highlight">67% konsumen global</span> telah menggunakan chatbot untuk dukungan pelanggan, dan <span class="highlight">85% interaksi pelanggan</span> akan dikelola tanpa manusia pada tahun 2025.</p>
+                </div>
+            </div>
+        </section>
+
+                <!-- ============================================
+                     BAGIAN 2: VIDEO PENJELASAN AI
+                     ============================================ -->
+                <article id="video" class="content-card">
+                    <h2><i class="fas fa-video"></i> Video: Memahami AI dalam 5 Menit</h2>
+                    <p>Video adalah media efektif untuk menjelaskan konsep kompleks seperti AI. HTML5 menyediakan elemen <code>&lt;video&gt;</code> untuk menampilkan konten multimedia.</p>
+                    
+                    <div class="video-container">
+                        <video controls poster="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80">
+                            <source src="chatbot.mp4">
+                            Browser Anda tidak mendukung elemen video.
+                            <track src="translate-video.vtt" kind="subtitles" srclang="en" label="Inggris"/>
+                            <track src="translate-video.vtt" kind="subtitles" srclang="id" label="Indonesia"/>
+                        </video>
+                        <p><small><i class="fas fa-info-circle"></i> Video ini menunjukkan penjelasan konsep AI.</small></p>
+                    </div>
+                    
+                    <div class="concept">
+                        <h4>Pentingnya Multimedia dalam Edukasi AI:</h4>
+                        <p>Penelitian menunjukkan bahwa konten visual meningkatkan retensi informasi hingga 65%. Video dan audio membantu menjelaskan konsep AI yang abstrak menjadi lebih konkret.</p>
+                    </div>
+                </article>
+
+                <!-- ============================================
+                     BAGIAN 3: AUDIO PENJELASAN AI
+                     ============================================ -->
+                <article id="audio" class="content-card">
+                    <h2><i class="fas fa-microphone-alt"></i> Audio: Percakapan tentang Masa Depan AI</h2>
+                    <p>Audio memungkinkan penjelasan AI dalam format yang dapat diakses saat multitasking. HTML5 elemen <code>&lt;audio&gt;</code> mendukung podcast, wawancara, dan penjelasan audio.</p>
+                    
+                    <div class="audio-container">
+                        <audio controls>
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                            Browser Anda tidak mendukung elemen audio.
+                        </audio>
+                        <p><small><i class="fas fa-headphones"></i> Dengarkan penjelasan tentang perkembangan AI terkini (contoh audio).</small></p>
+                    </div>
+                    
+                    <h3>Transkrip Audio (Contoh):</h3>
+                    <div style="background-color: #f8fafc; padding: 1.5rem; border-radius: var(--ai-radius); margin: 1.5rem 0;">
+                        <p><strong>Narator:</strong> "Kecerdasan buatan telah berkembang pesat dalam dekade terakhir. Dari algoritma rekomendasi sederhana hingga model bahasa besar seperti GPT-4, AI kini menjadi bagian tak terpisahkan dari kehidupan modern."</p>
+                        <p><strong>Ahli AI:</strong> "Yang menarik dari perkembangan AI saat ini adalah kemampuan generalisasi. Sistem AI modern dapat mentransfer pengetahuan dari satu domain ke domain lain, mirip dengan cara manusia belajar."</p>
+                    </div>
+                </article>
+
+                <section id="benefits" class="content-card">
+            <div class="section-header">
+                <h2>Manfaat Chatbot AI untuk Bisnis</h2>
+                <p>Implementasi chatbot AI memberikan berbagai keuntungan strategis bagi perusahaan</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Penghematan Biaya</h3>
+                    <p>Mengurangi biaya operasional layanan pelanggan hingga 30% dengan mengotomatisasi tugas rutin.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Kepuasan Pelanggan</h3>
+                    <p>Memberikan respons cepat dan konsisten, meningkatkan tingkat kepuasan pelanggan.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data & Analitik</h3>
+                    <p>Mengumpulkan data berharga tentang preferensi dan masalah pelanggan untuk pengambilan keputusan.</p>
+                </div>
+            </div>
+
+                <!-- ============================================
+                     BAGIAN 4: PROJECT WEB PRIBADI TENTANG AI
+                     ============================================ -->
+                <article id="project" class="content-card">
+                    <h2><i class="fas fa-laptop-code"></i> Project Web: Portofolio AI Specialist</h2>
+                    <p>Berikut contoh website pribadi seorang AI Specialist yang dibuat dengan HTML semantik dan CSS.</p>
+                    
+                    <div class="portfolio-section">
+                        <div class="profile-header">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Foto Profil" class="profile-img">
+                            <div>
+                                <h2>Dr. Sarah Chen</h2>
+                                <p>AI Researcher & Machine Learning Engineer</p>
+                                <p><i class="fas fa-map-marker-alt"></i> San Francisco, California</p>
+                                <p><i class="fas fa-envelope"></i> sarah.chen@ai-research.com</p>
+                            </div>
+                        </div>
+                        
+                        <h3>Spesialisasi dalam AI:</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                            <span style="background-color: var(--primary); color: white; padding: 0.3rem 0.8rem; border-radius: 20px;">Machine Learning</span>
+                            <span style="background-color: var(--secondary); color: white; padding: 0.3rem 0.8rem; border-radius: 20px;">Natural Language Processing</span>
+                            <span style="background-color: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 20px;">Computer Vision</span>
+                            <span style="background-color: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 20px;">Neural Networks</span>
+                            <span style="background-color: #ef4444; color: white; padding: 0.3rem 0.8rem; border-radius: 20px;">Deep Learning</span>
+                        </div>
+                        
+                        <h3>Proyek AI Terbaru:</h3>
+                        <div class="project-grid">
+                            <div class="project-card">
+                                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80" alt="AI Healthcare" class="project-img">
+                                <div class="project-content">
+                                    <h4>AI untuk Diagnosis Medis</h4>
+                                    <p>Mengembangkan model deep learning untuk mendeteksi penyakit dari gambar medis dengan akurasi 95%.</p>
+                                    <button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Lihat Detail</button>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Climate AI" class="project-img">
+                                <div class="project-content">
+                                    <h4>AI untuk Perubahan Iklim</h4>
+                                    <p>Sistem prediksi pola cuaca menggunakan reinforcement learning untuk memprediksi bencana alam.</p>
+                                    <button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Lihat Detail</button>
+                                </div>
+                            </div>
+                            
+                            <div class="project-card">
+                                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&q=80" alt="Ethical AI" class="project-img">
+                                <div class="project-content">
+                                    <h4>Framework AI Etis</h4>
+                                    <p>Mengembangkan pedoman etis untuk pengembangan dan implementasi AI yang bertanggung jawab.</p>
+                                    <button class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Lihat Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Demo Section -->
+        <section id="demo" class="section">
+            <div class="section-header">
+                <h2>Demo Chatbot AI</h2>
+                <p>Coba sendiri bagaimana chatbot AI dapat membantu pelanggan Anda</p>
+            </div>
+            
+            <div class="chatbot-demo-container">
+                <div class="chatbot-demo">
+                    <div class="chatbot-header">
+                        <i class="fas fa-robot"></i>
+                        <div>
+                            <h3 style="margin: 0;">Asisten Virtual AI</h3>
+                            <p style="margin: 0; color: var(--gray); font-size: 0.9rem;">Siap membantu 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chatbot-messages" id="chatMessages">
+                        <div class="message bot">
+                            <p><strong>AI Assistant:</strong> Halo! Saya asisten virtual AI. Saya bisa membantu Anda dengan:</p>
+                            <p>• Status pesanan</p>
+                            <p>• Informasi produk</p>
+                            <p>• Pengembalian barang</p>
+                            <p>• Pertanyaan umum</p>
+                            <p>Silakan ketik pertanyaan Anda!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chatbot-input">
+                        <input type="text" id="chatInput" placeholder="Ketik pesan Anda...">
+                        <button class="btn" onclick="sendMessage()" style="padding: 0.8rem 1.5rem;">Kirim</button>
+                    </div>
+                </div>
+                
+                <div class="demo-info">
+                    <h3>Fitur Chatbot AI</h3>
+                    <p>Chatbot ini menunjukkan kemampuan dasar yang dapat dikustomisasi untuk kebutuhan bisnis Anda:</p>
+                    
+                    <ul>
+                        <li><strong>Natural Language Processing (NLP):</strong> Memahami pertanyaan dalam bahasa alami</li>
+                        <li><strong>Context Awareness:</strong> Mengingat konteks percakapan sebelumnya</li>
+                        <li><strong>Multitasking:</strong> Menangani berbagai jenis permintaan sekaligus</li>
+                        <li><strong>Learning Capability:</strong> Meningkatkan respons berdasarkan interaksi</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 2rem;">Contoh Pertanyaan:</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn" onclick="quickQuestion('status pesanan')" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Status pesanan</button>
+                        <button class="btn" onclick="quickQuestion('pengembalian barang')" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Pengembalian barang</button>
+                        <button class="btn" onclick="quickQuestion('jam operasional')" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Jam operasional</button>
+                        <button class="btn" onclick="quickQuestion('metode pembayaran')" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Metode pembayaran</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card" style="margin-top: 2rem;">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Bagaimana Chatbot AI Bekerja?</h3>
+                
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4>Penerimaan Pertanyaan</h4>
+                            <p>Pengguna mengajukan pertanyaan melalui antarmuka chat. Sistem menerima input teks dan mempersiapkannya untuk pemrosesan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4>Pemrosesan Bahasa Alami</h4>
+                            <p>NLP menganalisis teks untuk memahami maksud, konteks, dan entitas yang relevan. Mengidentifikasi kata kunci dan niat pengguna.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4>Pencarian & Pemrosesan</h4>
+                            <p>Sistem mencari informasi yang relevan dari database pengetahuan dan memproses permintaan berdasarkan aturan dan algoritma machine learning.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4>Generasi Respons</h4>
+                            <p>Chatbot merumuskan respons yang paling tepat dan mengirimkannya kembali ke pengguna dalam format yang mudah dipahami.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- ============================================
+                     BAGIAN 5: PENGENALAN DASAR CSS UNTUK WEBSITE AI
+                     ============================================ -->
+                <article id="css" class="content-card">
+                    <h2><i class="fas fa-paint-brush"></i> CSS: Mendesain Website Penjelasan AI</h2>
+                    <p>CSS (Cascading Style Sheets) adalah bahasa yang digunakan untuk mendesain tampilan website. Berikut dasar-dasar CSS yang digunakan dalam website ini.</p>
+                    
+                    <div class="css-intro">
+                        <h3>Struktur Dasar CSS:</h3>
+                        <div style="background-color: #1e293b; color: white; padding: 1.5rem; border-radius: var(--ai-radius); margin: 1.5rem 0;">
+                            <code style="color: #e2e8f0;">
+                                selector {<br>
+                                &nbsp;&nbsp;property: value;<br>
+                                &nbsp;&nbsp;property: value;<br>
+                                }
+                            </code>
+                        </div>
+                        
+                        <div class="css-demo">
+                            <div class="css-box" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">
+                                <div>Gradients</div>
+                            </div>
+                            <div class="css-box" style="background-color: white; border: 3px solid #10b981; color: #1e293b;">
+                                <div>Borders</div>
+                            </div>
+                            <div class="css-box" style="background-color: #f59e0b; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);">
+                                <div>Shadows</div>
+                            </div>
+                            <div class="css-box" style="background-color: #ef4444; transform: rotate(-5deg);">
+                                <div>Transforms</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Responsive Design untuk AI Website:</h3>
+                        <p>Website ini menggunakan media queries untuk tampilan responsif di berbagai perangkat:</p>
+                        
+                        <div style="background-color: #f8fafc; padding: 1.5rem; border-radius: var(--ai-radius); margin: 1.5rem 0;">
+                            <code>
+                                @media (max-width: 768px) {<br>
+                                &nbsp;&nbsp;.hero h1 { font-size: 2.2rem; }<br>
+                                &nbsp;&nbsp;nav ul { flex-direction: column; }<br>
+                                &nbsp;&nbsp;.project-grid { grid-template-columns: 1fr; }<br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ============================================
+                     BAGIAN 6: 5 MACAM SELEKTOR CSS (BOBOT 50)
+                     ============================================ -->
+                <article class="selectors-section">
+                    <h2><i class="fas fa-magic"></i> 5 Macam Selektor CSS untuk Website AI</h2>
+                    <p>Selektor CSS menentukan elemen HTML mana yang akan diberi gaya. Berikut 5 jenis selektor yang digunakan dalam website penjelasan AI ini:</p>
+                    
+                    <div class="selector-demo">
+                        <!-- Selektor Universal -->
+                        <div class="selector-card">
+                            <h4>1. Universal Selector</h4>
+                            <p><code>*</code></p>
+                            <p>Memilih semua elemen</p>
+                            <p><small>Digunakan untuk reset margin/padding</small></p>
+                        </div>
+                        
+                        <!-- Selektor Elemen -->
+                        <div class="selector-card">
+                            <h4>2. Element Selector</h4>
+                            <p><code>body, h1, p</code></p>
+                            <p>Memilih berdasarkan nama tag</p>
+                            <p><small>Untuk styling dasar elemen HTML</small></p>
+                        </div>
+                        
+                        <!-- Selektor Class -->
+                        <div class="selector-card selector-class">
+                            <h4>3. Class Selector</h4>
+                            <p><code>.content-card</code></p>
+                            <p>Memilih berdasarkan class</p>
+                            <p><small>Untuk komponen yang digunakan berulang</small></p>
+                        </div>
+                        
+                        <!-- Selektor ID -->
+                        <div class="selector-card" id="selector-id">
+                            <h4>4. ID Selector</h4>
+                            <p><code>#ai-basics</code></p>
+                            <p>Memilih berdasarkan ID unik</p>
+                            <p><small>Untuk elemen spesifik sekali pakai</small></p>
+                        </div>
+                        
+                        <!-- Selektor Atribut -->
+                        <div class="selector-card" data-type="attribute">
+                            <h4>5. Attribute Selector</h4>
+                            <p><code>[data-type]</code></p>
+                            <p>Memilih berdasarkan atribut</p>
+                            <p><small>Untuk elemen dengan atribut tertentu</small></p>
+                        </div>
+                    </div>
+                    
+                    <div class="concept" style="margin-top: 2rem;">
+                        <h4>Contoh Kode Selektor dalam Website AI:</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                            <div style="background-color: #1e293b; color: white; padding: 1rem; border-radius: var(--ai-radius);">
+                                <code style="color: #e2e8f0; font-size: 0.9rem;">
+                                    /* Class selector untuk kartu konten AI */<br>
+                                    .content-card {<br>
+                                    &nbsp;&nbsp;background: white;<br>
+                                    &nbsp;&nbsp;border-radius: 12px;<br>
+                                    &nbsp;&nbsp;box-shadow: 0 4px 6px rgba(0,0,0,0.1);<br>
+                                    }<br><br>
+                                    
+                                    /* ID selector untuk bagian spesifik */<br>
+                                    #ai-basics {<br>
+                                    &nbsp;&nbsp;animation: fadeIn 0.5s ease;<br>
+                                    }
+                                </code>
+                            </div>
+                            
+                            <div style="background-color: #1e293b; color: white; padding: 1rem; border-radius: var(--ai-radius);">
+                                <code style="color: #e2e8f0; font-size: 0.9rem;">
+                                    /* Attribute selector untuk timeline */<br>
+                                    [data-timeline]::before {<br>
+                                    &nbsp;&nbsp;content: '';<br>
+                                    &nbsp;&nbsp;position: absolute;<br>
+                                    &nbsp;&nbsp;left: 0;<br>
+                                    &nbsp;&nbsp;width: 4px;<br>
+                                    &nbsp;&nbsp;background: #3b82f6;<br>
+                                    }<br><br>
+                                    
+                                    /* Element selector untuk semua heading */<br>
+                                    h1, h2, h3 {<br>
+                                    &nbsp;&nbsp;color: #1e293b;<br>
+                                    &nbsp;&nbsp;margin-bottom: 1rem;<br>
+                                    }
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ============================================
+                 SIDEBAR - Fakta dan Informasi Tambahan AI
+                 ============================================ -->
+            <sidebar>
+                <h3><i class="fas fa-lightbulb"></i> Fakta Menarik AI</h3>
+                
+                <div class="fact">
+                    <h4>AI vs Machine Learning</h4>
+                    <p>Machine Learning adalah bagian dari AI yang fokus pada sistem yang dapat belajar dari data tanpa pemrograman eksplisit.</p>
+                </div>
+                
+                <div class="fact">
+                    <h4>Sejarah AI</h4>
+                    <p>Istilah "Artificial Intelligence" pertama kali dicetuskan pada tahun 1956 dalam konferensi Dartmouth.</p>
+                </div>
+                
+                <div class="fact">
+                    <h4>AI dalam Kehidupan Sehari-hari</h4>
+                    <p>Rekomendasi Netflix, asisten virtual (Siri, Google Assistant), dan deteksi spam email adalah contoh AI yang sudah kita gunakan.</p>
+                </div>
+                
+                <div class="fact">
+                    <h4>Ethical AI</h4>
+                    <p>Kecerdasan buatan etis mencakup keadilan, akuntabilitas, transparansi, dan privasi dalam pengembangan sistem AI.</p>
+                </div>
+                
+                <h3 style="margin-top: 2rem;"><i class="fas fa-chart-line"></i> Statistik AI 2024</h3>
+                <div style="background-color: #f0f9ff; padding: 1.5rem; border-radius: var(--ai-radius); margin-top: 1rem;">
+                    <p><strong>Pasar AI Global:</strong> $500M+</p>
+                    <p><strong>Perusahaan yang Mengadopsi AI:</strong> 37%</p>
+                    <p><strong>Pekerjaan Baru Terkait AI:</strong> 97J+</p>
+                </div>
+                
+                <h3 style="margin-top: 2rem;"><i class="fas fa-download"></i> Sumber Daya</h3>
+                <a href="#" class="btn" style="width: 100%; text-align: center; margin-top: 1rem;">
+                    <i class="fas fa-book"></i> E-book: Dasar AI
+                </a>
+            </sidebar>
+        </main>
+    </div>
+
+    <!-- ============================================
+         FOOTER SEMANTIK - Penutup Website
+         ============================================ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>Materi Website</h3>
+                    <p><a href="#basics" style="color: #cbd5e1;">Elemen Semantik HTML</a></p>
+                    <p><a href="#video" style="color: #cbd5e1;">Video Penjelasan AI</a></p>
+                    <p><a href="#audio" style="color: #cbd5e1;">Audio Edukasi AI</a></p>
+                    <p><a href="#project" style="color: #cbd5e1;">Project Web AI</a></p>
+                    <p><a href="#css" style="color: #cbd5e1;">CSS untuk Website</a></p>
+                </div>
+                
+                <div>
+                    <h3>Teknologi Website</h3>
+                    <p>HTML5 Semantik</p>
+                    <p>CSS3 Modern</p>
+                    <p>Responsive Design</p>
+                    <p>5 Macam Selektor CSS</p>
+                    <p>Media Elements</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; Ruang AI 2025 - Website Media Edukasi AI. Menggunakan dasar HTML dan CSS.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">| Tema: Artificial Intelligence |</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript sederhana untuk interaktivitas website AI
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll untuk navigasi
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        // Update active navigation
+                        document.querySelectorAll('nav a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Scroll ke elemen target
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Demo interaktif untuk selektor CSS
+            const selectorCards = document.querySelectorAll('.selector-card');
+            selectorCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const selectorType = this.querySelector('h4').textContent;
+                    alert(`Contoh selektor CSS: ${selectorType}\nLihat implementasinya di kode CSS website ini.`);
+                });
+            });
+            
+            // Highlight aktif bagian yang sedang dilihat
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('article');
+                const navLinks = document.querySelectorAll('nav a');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Animasi tambahan untuk elemen AI
+            const aiNodes = document.querySelectorAll('.ai-node');
+            aiNodes.forEach((node, index) => {
+                node.style.animationDelay = `${index * 0.2}s`;
+            });
+            
+            // Console log untuk pengembang
+            console.log('Website "AI Explained" - Media edukasi AI menggunakan HTML/CSS');
+            console.log('Struktur: AI sebagai konten, Website sebagai media penyampai');
+            console.log('Teknologi: HTML5 Semantik, CSS3, Responsive Design');
+        });
+        
+        // Fungsi untuk demo sederhana
+        function showAIDemo() {
+            const demoBox = document.createElement('div');
+            demoBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 2rem;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 1001;
+                max-width: 500px;
+                width: 90%;
+            `;
+            
+            demoBox.innerHTML = `
+                <h3 style="color: #3b82f6; margin-bottom: 1rem;">Demo: Neural Network Sederhana</h3>
+                <p>Ini adalah simulasi sederhana bagaimana neural network memproses informasi:</p>
+                <div style="display: flex; justify-content: center; margin: 1.5rem 0;">
+                    <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin: 0 10px;">Input</div>
+                    <div style="width: 50px; height: 50px; background: #8b5cf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin: 0 10px;">Hidden</div>
+                    <div style="width: 50px; height: 50px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin: 0 10px;">Output</div>
+                </div>
+                <p>Neural network meniru cara otak manusia bekerja dengan neuron yang saling terhubung.</p>
+                <button onclick="this.parentElement.remove()" style="background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; margin-top: 1rem;">Tutup Demo</button>
+            `;
+            
+            document.body.appendChild(demoBox);
+        }
+    </script>
+</body>
+</html>
